@@ -20,4 +20,4 @@ This section describes how to install the module and get it working.
 2. Activate the Easy DNS Prefetch module through the *Modules* menu in Drupal.
 3. Click on the menu item *Configuration" or just go to ```/admin/config/easy_DNS_prefetch```
 4. Add the domains you wish to prefetch. Save when you're finished.
-5. That's it! Your prefetched domains should appear now in the source code fo your site.
+5. That's it! Your prefetched domains should appear now in the source code of your site.
