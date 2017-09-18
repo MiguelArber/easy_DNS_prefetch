@@ -3,6 +3,8 @@
 
 ---
 
+## Description
+
 The ***DNS prefetch*** technique allows you to **minimize** the impact of the **DNS resolution time** on the total page load time. 
 In the background, the browsers will actively perform domain name resolution actions, this way the referenced items will be **ready to be used** since the **DNS** will have **already been resolved**. 
 The DNS prefetching **reduces latency** when the user clicks a link. This is done by adding a dns-prefetch directive for the browsers into your site's head. 
