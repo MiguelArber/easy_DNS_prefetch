@@ -2,7 +2,7 @@
   "language": "php",
   "php": 5.3,
   "mysql": {
-    "database": "travis_ci_drupal_module_example_test",
+    "database": "easy_DNS_prefetch",
     "username": "root",
     "encoding": "utf8"
   },
@@ -16,10 +16,10 @@
   ],
   "before_script": [
     "cd ../..",
-    "mysql -e 'create database travis_ci_drupal_module_example_test'",
-    "php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/travis_ci_drupal_module_example_test --enable=simpletest travis_ci_drupal_module_example_test",
-    "ln -s $(readlink -e $(cd -)) travis_ci_drupal_module_example_test/drupal/sites/all/modules/travis_ci_drupal_module_example",
-    "cd travis_ci_drupal_module_example_test/drupal",
+    "mysql -e 'create database easy_DNS_prefetch'",
+    "php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/easy_DNS_prefetch --enable=simpletest easy_DNS_prefetch",
+    "ln -s $(readlink -e $(cd -)) easy_DNS_prefetch/drupal/sites/all/modules/travis_ci_drupal_module_example",
+    "cd easy_DNS_prefetch/drupal",
     "drush --yes pm-enable travis_ci_drupal_module_example",
     "drush runserver 127.0.0.1:8080 &",
     "until netstat -an 2>/dev/null | grep '8080.*LISTEN'; do true; done"
