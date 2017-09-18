@@ -15,9 +15,13 @@
     "composer global require drush/drush:6.*"
   ],
   "before_script": [
+    "pwd",
+    "ls",
     "cd ../..",
+    "pwd",
+    "ls",
     "mysql -e 'create database easy_DNS_prefetch_test'",
-    "php -d sendmail_path=`which true` ~/composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/easy_DNS_prefetch_test --enable=simpletest easy_DNS_prefetch_test",
+    "php -d sendmail_path=`which true` ~/.config/composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/easy_DNS_prefetch_test --enable=simpletest easy_DNS_prefetch_test",
     "ln -s $(readlink -e $(cd -)) easy_DNS_prefetch_test/drupal/sites/all/modules/easy_DNS_prefetch",
     "cd easy_DNS_prefetch_test/drupal",
     "drush --yes pm-enable easy_DNS_prefetch",
