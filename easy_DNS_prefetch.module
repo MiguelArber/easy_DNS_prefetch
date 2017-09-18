@@ -1,0 +1,51 @@
+<?php
+
+module_load_include('inc', 'easy_DNS_prefetch', 'easy_DNS_prefetch.routing');
+
+/**
+ * @file
+ */
+
+ /**
+  * Implements hook_permission().
+  */
+
+function easy_DNS_prefetch_permission() {
+
+  return array(
+
+    'administer easy_DNS_prefetch settings' => array(
+      'title' => t('Administer easy_DNS_prefetch configurations'),
+      'restrict access' => true)
+  );
+
+}
+
+  /**
+   * Implements hook_page_build().
+   */
+
+function easy_DNS_prefetch_page_build(&$page) {
+
+  $status = drupal_get_http_header('status');
+
+  if ($status == '404 Not Found' || $status == '403 Forbidden') {
+    return;
+  }
+
+  $domains = variable_get('easy_DNS_prefetch_URL', NULL);
+
+  if (is_null($domains) || empty($domains)) {
+    return;
+  }
+
+  foreach ($domains as $domain) {
+    $attributes = [
+      'href' => url($domain['easy_DNS_prefetch_URL']),
+      'rel' => 'dns-prefetch',
+    ];
+
+    drupal_add_html_head_link($attributes);
+  }
+
+}

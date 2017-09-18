@@ -1,0 +1,4 @@
+name = Easy DNS Prefetch
+description = Provides a simple way to prefetch DNS in your site.
+core = 7.x
+configure = admin/config/easy_DNS_prefetch
