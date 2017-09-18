@@ -12,7 +12,6 @@ Just write down the URL you wish to prefetch and **Easy DNS Prefetch** will do t
 
 
 ## Installation & use
----
 
 This section describes how to install the module and get it working.
 
