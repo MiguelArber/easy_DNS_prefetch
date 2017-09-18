@@ -18,12 +18,12 @@
     "cd ../..",
     "mysql -e 'create database easy_DNS_prefetch'",
     "php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/easy_DNS_prefetch --enable=simpletest easy_DNS_prefetch",
-    "ln -s $(readlink -e $(cd -)) easy_DNS_prefetch/drupal/sites/all/modules/travis_ci_drupal_module_example",
+    "ln -s $(readlink -e $(cd -)) easy_DNS_prefetch/drupal/sites/all/modules/easy_DNS_prefetch",
     "cd easy_DNS_prefetch/drupal",
-    "drush --yes pm-enable travis_ci_drupal_module_example",
+    "drush --yes pm-enable easy_DNS_prefetch",
     "drush runserver 127.0.0.1:8080 &",
     "until netstat -an 2>/dev/null | grep '8080.*LISTEN'; do true; done"
   ],
-  "script": "drush test-run 'Travis-CI Drupal Module Example' --uri=http://127.0.0.1:8080",
+  "script": "drush test-run 'Easy DNS Prefetch' --uri=http://127.0.0.1:8080",
   "os": "linux"
 }
