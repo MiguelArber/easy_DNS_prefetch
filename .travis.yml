@@ -12,7 +12,7 @@
   "install": [
     "sudo apt-get install -y --force-yes php5-cgi php5-mysql",
     "export PATH=\"$HOME/composer/vendor/bin:$PATH\"",
-    "composer global require drush/drush:6.*"
+    "composer global require drush/drush:8.*"
   ],
   "before_script": [
     "pwd",
@@ -23,11 +23,15 @@
     "mysql -e 'create database easy_DNS_prefetch_test'",
     "php -d sendmail_path=`which true` ~/.config/composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/easy_DNS_prefetch_test --enable=simpletest easy_DNS_prefetch_test",
     "ln -s $(readlink -e $(cd -)) easy_DNS_prefetch_test/drupal/sites/all/modules/easy_DNS_prefetch",
+    "pwd",
+    "ls",
     "cd easy_DNS_prefetch_test/drupal",
-    "drush --yes pm-enable easy_DNS_prefetch",
-    "drush runserver 127.0.0.1:8080 &",
+    "pwd",
+    "ls",
+    "$HOME/composer/vendor/bin/drush --yes pm-enable easy_DNS_prefetch",
+    "$HOME/composer/vendor/bin/drush runserver 127.0.0.1:8080 &",
     "until netstat -an 2>/dev/null | grep '8080.*LISTEN'; do true; done"
   ],
-  "script": "drush test-run 'Easy DNS prefetch' --uri=http://127.0.0.1:8080",
+  "script": "$HOME/composer/vendor/bin/drush test-run 'Easy DNS prefetch' --uri=http://127.0.0.1:8080",
   "os": "linux"
 }
